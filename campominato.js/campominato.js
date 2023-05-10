@@ -51,7 +51,7 @@ play.addEventListener('click',
         numCelle = 49;
         classe = "container-numcelle-hard";
         arrayNumRandom = createNumRandomOrderArr(1,49) ;
-        arrayNumRandom.length  = 1 ;
+        arrayNumRandom.length  = 16 ;
     }
         console.log(arrayNumRandom);
         console.log(classe);
@@ -70,6 +70,9 @@ play.addEventListener('click',
                     console.log("Hai preso una bomba! You lose!!! ");
                     gameEndRed = document.getElementsByClassName("bg-cell-red").length ; //conto quanti sono i blu
                     console.log("numero celle con le bombe " + gameEndRed);
+                    console.log("IL TUO PUNTEGGIO " + gameEndBlue);
+                    alert("IL TUO PUNTEGGIO " + gameEndBlue)
+
                     
                 } else { // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
                     cella.classList.add("bg-cell-blue");
@@ -77,13 +80,14 @@ play.addEventListener('click',
                     console.log("Hai preso una cella sicura ! Bravo continua  ");
                     gameEndBlue = document.getElementsByClassName("bg-cell-blue").length ; //conto quanti sono i blu
                     console.log("numero celle sicure " + gameEndBlue);
-                    if (gameEndBlue === numCelle - gameEndRed ) {
+                    if (gameEndBlue === numCelle - arrayNumRandom.length ) {
                         console.log("You win");
                         alert("you win")
                     }
                 }
             }
             )
+            
         }
         
 }
@@ -110,7 +114,3 @@ function createNumRandomOrderArr(min,max) {
 function numRandomMinMax(min,max) {
     return Math.floor(Math.random() * (max - min +1) + min)
 }
-
-// La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti
-
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba
