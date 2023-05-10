@@ -21,21 +21,26 @@ const containerCelle = document.getElementById("main-container")
 const play = document.getElementById("button-play")
 const selectDifficulty =document.getElementById ("select-difficulty")
 
+
 // L’utente clicca su un bottone che genererà una griglia di gioco quadrata.
 play.addEventListener('click',
     function () {
         containerCelle.innerHTML = " ";
+
         // select che fornisca una scelta tra tre diversi livelli di difficoltà:
+        let gameEndBlue = 0;
+        let gameEndRed = 0;
     let numCelle ;
     let classe ;
-    let arrayNumRandom = createNumRandomOrderArr(1,100) ; // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta
-    arrayNumRandom.length  = 16 ;
+    let arrayNumRandom ; // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta
     const difficulty = selectDifficulty.value;
 
+ // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta
     if (difficulty === "easy") { //con difficoltà 1 => 100 caselle divise in 10 caselle per 10 righe
         numCelle = 100;
         classe = "container-numcelle-easy";
-
+        arrayNumRandom = createNumRandomOrderArr(1,100)
+        arrayNumRandom.length  = 16 ;
     } else if (difficulty === "normal") { //con difficoltà 2 => 81 caselle divise in 9 caselle per 9 righe;
         numCelle = 81;
         classe = "container-numcelle-normal";
@@ -46,7 +51,7 @@ play.addEventListener('click',
         numCelle = 49;
         classe = "container-numcelle-hard";
         arrayNumRandom = createNumRandomOrderArr(1,49) ;
-        arrayNumRandom.length  = 16 ;
+        arrayNumRandom.length  = 1 ;
     }
         console.log(arrayNumRandom);
         console.log(classe);
@@ -63,15 +68,18 @@ play.addEventListener('click',
                     cella.classList.add("bg-cell-red");
                     console.log(cella.innerText);
                     console.log("Hai preso una bomba! You lose!!! ");
+                    gameEndRed = document.getElementsByClassName("bg-cell-red").length ; //conto quanti sono i blu
+                    console.log("numero celle con le bombe " + gameEndRed);
                     
                 } else { // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
                     cella.classList.add("bg-cell-blue");
                     console.log(cella.innerText);
                     console.log("Hai preso una cella sicura ! Bravo continua  ");
-                    const gameEnd = document.getElementsByClassName("bg-cell-blue").length ; //conto quanti sono i blu
-                    console.log("numero celle sicure " + gameEnd);
-                    if (gameEnd === numCelle - arrayNumRandom) {
+                    gameEndBlue = document.getElementsByClassName("bg-cell-blue").length ; //conto quanti sono i blu
+                    console.log("numero celle sicure " + gameEndBlue);
+                    if (gameEndBlue === numCelle - gameEndRed ) {
                         console.log("You win");
+                        alert("you win")
                     }
                 }
             }
