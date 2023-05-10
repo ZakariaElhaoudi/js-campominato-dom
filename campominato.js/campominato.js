@@ -65,7 +65,7 @@ play.addEventListener('click',
                     console.log(cella.innerText);
                     console.log("Hai preso una bomba! You lose!!! ");
 
-                } else if (cella === numCelle) { //raggiunge il numero massimo possibile di numeri consentiti
+                } else if (arrayNumRandom.includes(i) === 0) { //raggiunge il numero massimo possibile di numeri consentiti
                     console.log("Hai preso tutte le celle sicure ! Bravo You win ");
                     
                 } else { // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
