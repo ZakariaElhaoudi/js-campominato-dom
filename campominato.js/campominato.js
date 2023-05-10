@@ -25,34 +25,35 @@ const selectDifficulty =document.getElementById ("select-difficulty")
 // L’utente clicca su un bottone che genererà una griglia di gioco quadrata.
 play.addEventListener('click',
     function () {
+        
         containerCelle.innerHTML = " ";
 
         // select che fornisca una scelta tra tre diversi livelli di difficoltà:
         let gameEndBlue = 0;
         let gameEndRed = 0;
-    let numCelle ;
-    let classe ;
-    let arrayNumRandom ; // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta
-    const difficulty = selectDifficulty.value;
+        let numCelle ;
+        let classe ;
+        let arrayNumRandom ; // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta
+        const difficulty = selectDifficulty.value;
 
- // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta
-    if (difficulty === "easy") { //con difficoltà 1 => 100 caselle divise in 10 caselle per 10 righe
-        numCelle = 100;
-        classe = "container-numcelle-easy";
-        arrayNumRandom = createNumRandomOrderArr(1,100)
-        arrayNumRandom.length  = 16 ;
-    } else if (difficulty === "normal") { //con difficoltà 2 => 81 caselle divise in 9 caselle per 9 righe;
-        numCelle = 81;
-        classe = "container-numcelle-normal";
-        arrayNumRandom = createNumRandomOrderArr(1,81) ;
-        arrayNumRandom.length  = 16 ;
+        // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta
+        if (difficulty === "easy") { //con difficoltà 1 => 100 caselle divise in 10 caselle per 10 righe
+            numCelle = 100;
+            classe = "container-numcelle-easy";
+            arrayNumRandom = createNumRandomOrderArr(1,100)
+            arrayNumRandom.length  = 16 ;
+        } else if (difficulty === "normal") { //con difficoltà 2 => 81 caselle divise in 9 caselle per 9 righe;
+            numCelle = 81;
+            classe = "container-numcelle-normal";
+            arrayNumRandom = createNumRandomOrderArr(1,81) ;
+            arrayNumRandom.length  = 16 ;
 
-    } else if (difficulty === "hard") { //con difficoltà 3 => 49 caselle divise in 7 caselle per 7 righe;
-        numCelle = 49;
-        classe = "container-numcelle-hard";
-        arrayNumRandom = createNumRandomOrderArr(1,49) ;
-        arrayNumRandom.length  = 16 ;
-    }
+        } else if (difficulty === "hard") { //con difficoltà 3 => 49 caselle divise in 7 caselle per 7 righe;
+            numCelle = 49;
+            classe = "container-numcelle-hard";
+            arrayNumRandom = createNumRandomOrderArr(1,49) ;
+            arrayNumRandom.length  = 16 ;
+        }
         console.log(arrayNumRandom);
         console.log(classe);
         for (let i = 1 ; i <= numCelle; i++){ // Ogni cella ha un numero progressivo, da 1 a 100.
