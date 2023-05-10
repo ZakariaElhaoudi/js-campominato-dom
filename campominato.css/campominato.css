@@ -57,7 +57,11 @@ main{
     align-items: center;
 }
 
-.bg-cell {
+.bg-cell-red {
+    background-color: red;
+}
+
+.bg-cell-blue {
     background-color: lightblue;
 }
 

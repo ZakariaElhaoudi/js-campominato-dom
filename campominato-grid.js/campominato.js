@@ -13,7 +13,8 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro e
 const containerCelle = document.getElementById("main-container")
 const play = document.getElementById("button-play")
 const selectDifficulty =document.getElementById ("select-difficulty")
-const arrayNumRandom =  createNumRandomOrderArr(1,16) ;
+const arrayNumRandom = createNumRandomOrderArr(1,100) ;
+arrayNumRandom.length  = 16 ;
 console.log(arrayNumRandom);
 // L’utente clicca su un bottone che genererà una griglia di gioco quadrata.
 play.addEventListener('click',
@@ -41,11 +42,18 @@ play.addEventListener('click',
             cella.innerText = i;
             containerCelle.append(cella);
 
-            // Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
+             //l’utente clicca su una cella:
             cella.addEventListener('click',
             function () {
-                cella.classList.add("bg-cell");
-                console.log(cella.innerText);
+                if (arrayNumRandom.includes(i) ) {  //se il numero è presente nella lista dei numeri generati la cella si colora di rosso.
+                    cella.classList.add("bg-cell-red");
+                    console.log(cella.innerText);
+                    console.log("hai preso una bomba! You lose!!! ");
+                } else { // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
+                    cella.classList.add("bg-cell-blue");
+                    console.log(cella.innerText);
+                    console.log("Hai preso una cella sicura ! Bravo continua  ");
+                }
             }
             )
         }
