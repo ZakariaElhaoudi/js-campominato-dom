@@ -57,27 +57,27 @@ play.addEventListener('click',
             containerCelle.append(cella);
 
              //l’utente clicca su una cella:
-             // La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti
             cella.addEventListener('click',
             function () {
                 if (arrayNumRandom.includes(i) ) {  //se il numero è presente nella lista dei numeri generati la cella si colora di rosso.
                     cella.classList.add("bg-cell-red");
                     console.log(cella.innerText);
                     console.log("Hai preso una bomba! You lose!!! ");
-
-                } else if (arrayNumRandom.includes(i) === 0) { //raggiunge il numero massimo possibile di numeri consentiti
-                    console.log("Hai preso tutte le celle sicure ! Bravo You win ");
                     
                 } else { // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
                     cella.classList.add("bg-cell-blue");
                     console.log(cella.innerText);
                     console.log("Hai preso una cella sicura ! Bravo continua  ");
-
+                    const gameEnd = document.getElementsByClassName("bg-cell-blue").length ; //conto quanti sono i blu
+                    console.log("numero celle sicure " + gameEnd);
+                    if (gameEnd === numCelle - arrayNumRandom) {
+                        console.log("You win");
+                    }
                 }
             }
             )
         }
-        // const gameEnd = 
+        
 }
 )
 
