@@ -1,0 +1,85 @@
+/* regole generali  */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* regole header  */
+#container-bar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 70px;
+    width: 90%;
+    margin: 0 auto;
+}
+#logo {
+    height: 70px;
+    width: calc(100% / 2);
+    display: flex;
+    align-items: center;
+}
+
+#logo > img {
+    max-width: 100%;
+    height: 70px;
+}
+
+#button-play, #select-difficulty{
+    border-radius: 20px 20px ;
+    padding: 16px 32px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* regole main  */
+main{
+    background-color: #7fffd4 ;
+    height: 100vh;
+    overflow: auto;
+}
+
+#main-container{
+    height: 100% ;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#main-container > .cella {
+    border: solid 2px black;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-cell {
+    background-color: lightblue;
+}
+
+.container-numcelle-easy{
+    width: calc(100% / 10);
+}
+
+.container-numcelle-normal{
+    width: calc(100% / 9);
+}
+
+.container-numcelle-hard{
+    width: calc(100% / 7);
+}
+
+/* regole footer  */
+
+footer {
+    height: 70px;
+}
+
+footer > #footer-text {
+    margin-left: 10%;
+    margin-top: 20px;
+}
