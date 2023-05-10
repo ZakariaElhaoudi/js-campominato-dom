@@ -13,9 +13,7 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro e
 const containerCelle = document.getElementById("main-container")
 const play = document.getElementById("button-play")
 const selectDifficulty =document.getElementById ("select-difficulty")
-const arrayNumRandom = createNumRandomOrderArr(1,100) ;
-arrayNumRandom.length  = 16 ;
-console.log(arrayNumRandom);
+
 // L’utente clicca su un bottone che genererà una griglia di gioco quadrata.
 play.addEventListener('click',
     function () {
@@ -23,6 +21,8 @@ play.addEventListener('click',
         // select che fornisca una scelta tra tre diversi livelli di difficoltà:
     let numCelle ;
     let classe ;
+    let arrayNumRandom = createNumRandomOrderArr(1,100) ;
+    arrayNumRandom.length  = 16 ;
     const difficulty = selectDifficulty.value;
 
     if (difficulty === "easy") { //con difficoltà 1 => 100 caselle divise in 10 caselle per 10 righe
@@ -31,10 +31,15 @@ play.addEventListener('click',
     } else if (difficulty === "normal") { //con difficoltà 2 => 81 caselle divise in 9 caselle per 9 righe;
         numCelle = 81;
         classe = "container-numcelle-normal";
+        arrayNumRandom = createNumRandomOrderArr(1,81) ;
+        arrayNumRandom.length  = 16 ;
     } else if (difficulty === "hard") { //con difficoltà 3 => 49 caselle divise in 7 caselle per 7 righe;
         numCelle = 49;
         classe = "container-numcelle-hard";
+        arrayNumRandom = createNumRandomOrderArr(1,49) ;
+        arrayNumRandom.length  = 16 ;
     }
+        console.log(arrayNumRandom);
         console.log(classe);
         for (let i = 1 ; i <= numCelle; i++){ // Ogni cella ha un numero progressivo, da 1 a 100.
             let cella = document.createElement("div")
@@ -49,6 +54,7 @@ play.addEventListener('click',
                     cella.classList.add("bg-cell-red");
                     console.log(cella.innerText);
                     console.log("hai preso una bomba! You lose!!! ");
+                    
                 } else { // Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
                     cella.classList.add("bg-cell-blue");
                     console.log(cella.innerText);
@@ -89,10 +95,6 @@ function createNumRandomOrderArr(min,max) {
 function numRandomMinMax(min,max) {
     return Math.floor(Math.random() * (max - min +1) + min)
 }
-
-// In seguito l’utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina.
-
-// Altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
 
 // La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti
 
